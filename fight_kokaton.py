@@ -171,12 +171,12 @@ def main():
     screen = pg.display.set_mode((WIDTH, HEIGHT))    
     bg_img = pg.image.load("fig/pg_bg.jpg")
     bird = Bird((300, 200))
-    beam= None
+    beam = None
     bomb = Bomb((255, 0, 0), 10)
-    bombs=[Bomb((255, 0, 0), 10) for _ in range(NUM_OF_BOMBS)]
-    score=Score(0, "hgp創英角ﾎﾟｯﾌﾟ体", (0, 0, 255))
+    bombs = [Bomb((255, 0, 0), 10) for _ in range(NUM_OF_BOMBS)]
+    score = Score(0, "hgp創英角ﾎﾟｯﾌﾟ体", (0, 0, 255))
     clock = pg.time.Clock()
-    point=0
+    point = 0
     tmr = 0
     while True:
         for event in pg.event.get():
