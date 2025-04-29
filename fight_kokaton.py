@@ -141,14 +141,27 @@ class Bomb:
         screen.blit(self.img, self.rct)
 
 class Score:
-    def __init__(self,):
-        self.fonto = pg.font.SysFont("hgp創英角ﾎﾟｯﾌﾟ体", 30)
-        self.img = self.fonto.render(f"スコア:0", 0, (0, 0, 255))
+    """
+    スコア表示に関するクラス
+    """
+    def __init__(self, point: int, font: str, color: tuple[int, int, int]):
+        """
+        引数に基づき、スコアを表示するSurfaceを生成する
+        引数1 point: スコアの初期値
+        引数2 font: フォントの指定
+        引数3 color: フォントの色(R,G,B)
+        """
+        self.fonto = pg.font.SysFont(font, 30)
+        self.img = self.fonto.render(f"スコア:{point}", 0, color)
         self.rct = self.img.get_rect() 
         self.rct.center = (100, (HEIGHT-50))
         
 
-    def update(self,screen: pg.Surface,point:int):
+    def update(self, screen: pg.Surface, point: int):
+        """
+        引数1 screen：画面Surface
+        引数2 point: スコア変動時の値
+        """
         self.img = self.fonto.render(f"スコア:{point}", 0, (0, 0, 255))
         screen.blit(self.img, self.rct)
 
@@ -161,7 +174,7 @@ def main():
     beam= None
     bomb = Bomb((255, 0, 0), 10)
     bombs=[Bomb((255, 0, 0), 10) for _ in range(NUM_OF_BOMBS)]
-    score=Score()
+    score=Score(0, "hgp創英角ﾎﾟｯﾌﾟ体", (0, 0, 255))
     clock = pg.time.Clock()
     point=0
     tmr = 0
